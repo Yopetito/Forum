@@ -54,7 +54,7 @@ class SecurityController extends AbstractController{
             $user = $userManager->findOneByMail($email);
             var_dump($user);die;
             if($user) {
-                //$hash = 
+                //$hash = $user->getPassword();
                 if(password_verify($password, $hash)) {
                     $_SESSION["user"] = $user;
                     header("Location: home.php"); exit;
