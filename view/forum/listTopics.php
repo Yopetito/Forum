@@ -6,22 +6,25 @@
 
 <h1>Liste des topics</h1>
 
-<?php
-foreach($topics as $topic){ ?>
+<div class="list-box">
+    <?php
+    foreach($topics as $topic){ ?>
 
-<p>
-    <br>
-    <a href="index.php?ctrl=forum&action=listPostInTopic&id=<?= $topic->getId() ?>"><?= $topic ?></a> 
-    <br> par <?= $topic->getUser() ?> 
-    <br> le <?= $topic->getCreationDate() ?>
-   <?php if(App\Session::getUser() && App\Session::getUser()->getId() == $topic->getUser()->getId()) { ?>
-        <a href="index.php?ctrl=forum&action=lockTopic&id= <?= $topic->getId() ?>">
-          <?= $topic->getLocked() ? 'Dévérouiller' : 'Vérouiller' ?>
-        </a>
-        <?php } ?> 
-</p>
-<?php } ?>
- 
+    <p>
+        <br>
+        <div class="list-item">
+            <a href="index.php?ctrl=forum&action=listPostInTopic&id=<?= $topic->getId() ?>"><?= $topic ?></a> 
+            <br> par <?= $topic->getUser() ?> 
+            <br> le <?= $topic->getCreationDate() ?>
+            <?php if(App\Session::getUser() && App\Session::getUser()->getId() == $topic->getUser()->getId()) { ?>
+                <a href="index.php?ctrl=forum&action=lockTopic&id= <?= $topic->getId() ?>">
+                <?= $topic->getLocked() ? 'Dévérouiller' : 'Vérouiller' ?>
+                </a>
+            <?php } ?>
+        </div> 
+    </p>
+    <?php  } ?>
+</div>
 
 <?php if(App\Session::getUser()) { ?>
 <form action="index.php?ctrl=forum&action=addTopic&id=<?= $category->getId(); ?>" method="POST">
