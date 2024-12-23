@@ -50,7 +50,8 @@ final class Post extends Entity {
 
     public function getCreationDate()
     {
-        return $this->creationDate;
+        $date = new \DateTime($this->creationDate);
+        return $date->format("d/m/y à H:i");
     }
 
 /**
