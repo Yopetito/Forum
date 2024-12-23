@@ -71,10 +71,10 @@ class ForumController extends AbstractController implements ControllerInterface{
     
                 $postManager = new PostManager();
                 $postManager->add(['message' => $message, 'topic_id' => $topicId, 'user_id' => $userId]);
+                
+                $this->redirectTo("forum", "listPostInTopic", $topicId);
             }
         }
-    
-        return $this->listPostInTopic($topicId);
     }
 
     public function addTopic() {
