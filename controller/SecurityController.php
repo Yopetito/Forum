@@ -3,6 +3,7 @@ namespace Controller;
 
 use App\AbstractController;
 use App\ControllerInterface;
+use Model\Managers\UserManager;
 
 class SecurityController extends AbstractController{
     // contiendra les méthodes liées à l'authentification : register, login et logout
@@ -30,8 +31,10 @@ class SecurityController extends AbstractController{
                         $userManager->add([
                             'email' => $email,
                             'nickname' => $nickname,
-                            'password' => $pass1
+                            'password' => password_hash($pass1, PASSWORD_DEFAULT)
                         ]);
+                    } else {
+                        var_dump("les mdp sont pas identique");die;
                     }
                 }
             }
@@ -42,9 +45,27 @@ class SecurityController extends AbstractController{
         ];
     }
 
-    public function login () {}
+    public function login () {
+
+    }
     public function logout () {}
 }
+
+// POUR LE LOGIN:
+// -on filtre leschamps du formulaire
+
+// -si les filtre spassent, on retoruve le password correspondant au mail entré dans le formulaire
+
+// -si on le trouve, on recupere le hash de la base de données
+
+// -on retrouve l'utilisateur correspondant
+
+// -on vérifie le mot de passe password_verify
+
+// -si on arrive a se connecte, on fait passer le user en session
+
+// -si aucune des conditions ne passent (mauvais mot de passe, utilisateur inexistant, etc) -> message derreur
+
 
 // SecurityController
 
