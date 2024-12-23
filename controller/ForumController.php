@@ -91,10 +91,22 @@ class ForumController extends AbstractController implements ControllerInterface{
                 if($topicPost){
                     $postManager = new PostManager;
                     $postManager->add(['message' => $topicPost, 'topic_id' => $topicId, 'user_id' => $userId]);
+
+                    $this->redirectTo("forum", "listPostInTopic", $topicId);
                 }
             }
         }
-
-        return $this->ListPostInTopic($topicId);
     }
+
+    public function lockTopic($id) {
+        $topicManager = new TopicManager();
+        $topic = $topicManager->findOneById($id);
+        if($topic){
+            $lockstatus = $topic->getLocked() ? 0 : 1;
+            $topicManager->updateLocked($id, $lockstatus);
+
+            $this->redirectTo("topic", "listTopicsByCategory", $topic->getCategory()->getId());
+        }
+    }
+
 }

@@ -14,7 +14,7 @@ final class Topic extends Entity{
     private $user;
     private $category;
     private $creationDate;
-    private $closed;
+    private $locked;
 
     public function __construct($data){         
         $this->hydrate($data);        
@@ -72,7 +72,7 @@ final class Topic extends Entity{
     }
 
     public function getCategory(){
-        return $this->Category;
+        return $this->category;
     }
 
     /**

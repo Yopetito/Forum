@@ -29,5 +29,9 @@ class TopicManager extends Manager{
         );
     }
 
+    public function updateLocked($id, $locked) {
+        $sql = "UPDATE topic SET locked = :locked WHERE id_topic = :id";
+        DAO::update($sql, ['locked' => $locked, 'id' => $id]);
+    }
 
 }
