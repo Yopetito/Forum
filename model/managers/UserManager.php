@@ -17,7 +17,7 @@ class UserManager extends Manager{
     public function findOneByMail($email) {
         $sql = "SELECT * FROM ".$this->tableName." WHERE email = :email";
 
-        $result = DAO::select($sql, ['email' => $email]);
+        $result = DAO::select($sql, ['email' => $email], false);
         return $this->getOneOrNullResult($result, $this->className);
     }
 

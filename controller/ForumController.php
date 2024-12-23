@@ -67,8 +67,7 @@ class ForumController extends AbstractController implements ControllerInterface{
             $topicId = filter_input(INPUT_GET, "id", FILTER_VALIDATE_INT);
     
             if ($message && $topicId) {
-                $userId = 1; 
-    
+                $userId = $_SESSION["user"]->getId(); 
                 $postManager = new PostManager();
                 $postManager->add(['message' => $message, 'topic_id' => $topicId, 'user_id' => $userId]);
                 
@@ -84,7 +83,7 @@ class ForumController extends AbstractController implements ControllerInterface{
             $id = filter_input(INPUT_GET, "id", FILTER_VALIDATE_INT);
 
             if($topicTitle && $topicPost) {
-                $userId = 1;
+                $userId = $_SESSION["user"]->getId();
                 
                 $topicManager = new TopicManager();
                 $topicId = $topicManager->add(['title' => $topicTitle, 'category_id' => $id, 'user_id' => $userId]);

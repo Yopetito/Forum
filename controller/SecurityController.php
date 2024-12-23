@@ -52,12 +52,11 @@ class SecurityController extends AbstractController{
         if($email && $password){
             $userManager = new UserManager();
             $user = $userManager->findOneByMail($email);
-            var_dump($user);die;
             if($user) {
-                //$hash = $user->getPassword();
+                $hash = $user->getPassword();
                 if(password_verify($password, $hash)) {
                     $_SESSION["user"] = $user;
-                    header("Location: home.php"); exit;
+                    header("Location: index.php"); exit;
                 } else {
                     header("Location: index.php"); exit;
                 }
@@ -73,7 +72,10 @@ class SecurityController extends AbstractController{
         ];
     }
 
-    public function logout () {}
+    public function logout () {
+        unset($_SESSION["user"]);
+        header("Location: index.php");
+    }
 }
 
 // POUR LE LOGIN:
