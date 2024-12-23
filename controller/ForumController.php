@@ -104,8 +104,7 @@ class ForumController extends AbstractController implements ControllerInterface{
         if($topic){
             $lockstatus = $topic->getLocked() ? 0 : 1;
             $topicManager->updateLocked($id, $lockstatus);
-
-            $this->redirectTo("topic", "listTopicsByCategory", $topic->getCategory()->getId());
+            $this->redirectTo("forum", "listTopicsByCategory", $topic->getCategory()->getId());
         }
     }
 
