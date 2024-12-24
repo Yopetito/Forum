@@ -8,9 +8,14 @@
 
 <div class="list-box">
     <?php 
+    // if($posts == null) {
+    //     echo "ya rien";
+    // }
+    // var_dump($posts);die;
     foreach($posts as $post ){ ?>
     <div class="list-item">
-        <p>par <?= $post->getUser() ?> le <?= $post->getCreationDate() ?> <br> <?= $post ?><br><br> </p>
+        <p>par <?= $post->getUser() ? $post->getUser() : "utilisateur supprimé"  ?> 
+        <br>le <?= $post->getCreationDate() ?> <br> <?= $post ?><br><br> </p>
     </div>
     <?php } ?>
 </div>

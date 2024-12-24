@@ -11,12 +11,11 @@
     foreach($topics as $topic){ ?>
 
     <p>
-        <br>
         <div class="list-item">
             <a href="index.php?ctrl=forum&action=listPostInTopic&id=<?= $topic->getId() ?>"><?= $topic ?></a> 
-            <br> par <?= $topic->getUser() ?> 
+            <br> par <?= $topic->getUser() ? $topic->getUser() : "utilisateur supprimé" ?>  
             <br> le <?= $topic->getCreationDate() ?>
-            <?php if(App\Session::getUser() && App\Session::getUser()->getId() == $topic->getUser()->getId()) { ?>
+            <?php if(App\Session::getUser() && ($topic->getUser() && App\Session::getUser()->getId() == $topic->getUser()->getId()) || App\Session::isAdmin()) { ?>
                 <a href="index.php?ctrl=forum&action=lockTopic&id= <?= $topic->getId() ?>">
                 <?= $topic->getLocked() ? 'Dévérouiller' : 'Vérouiller' ?>
                 </a>
