@@ -15,7 +15,18 @@ class SecurityController extends AbstractController{
         $pass1 = filter_input(INPUT_POST, 'pass1', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $pass2 = filter_input(INPUT_POST, 'pass2', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
+        $passwordPattern = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]{12,}$/';
+        $validPassword = filter_var($pass1, FILTER_VALIDATE_REGEXP, [
+            "options" => ["regexp" => $passwordPattern]
+        ]);
+
+
         if($email && $nickname && $pass1 && $pass2) {
+
+            if (!$validPassword) {
+                var_dump("Mot de passe invalide : minimum 12 caractères, avec au moins 1 majuscule, 1 minuscule, 1 chiffre et 1 caractère spécial.");die;
+            }
+            
             $userManager = new UserManager();
             $user = $userManager->findOneByMail($email);
 
