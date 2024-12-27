@@ -22,7 +22,7 @@
 <?php
 if(App\Session::getUser()) {
     if(!$topic->getLocked()) { ?>
-        <form action="index.php?ctrl=forum&action=addPost&id=<?= $topic->getId(); ?>" method="POST">
+        <form action="index.php?ctrl=post&action=addPost&id=<?= $topic->getId(); ?>" method="POST">
             <label for="message">Ecrivez votre message ici:</label><br>
             <textarea name="message" id="message" cols="40" rows="5"></textarea>
             <input type="submit" name="submit" value="Envoyer le post!">
