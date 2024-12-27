@@ -118,7 +118,8 @@ final class User extends Entity{
      * Get the value of registrationDate
      */ 
     public function getRegistrationDate(){
-        return $this->registrationDate;
+        $date = new \DateTime($this->registrationDate);
+        return $date->format("d/m/y à H:i");
     }
 
     /**

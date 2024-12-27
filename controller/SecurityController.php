@@ -4,6 +4,7 @@ namespace Controller;
 use App\AbstractController;
 use App\ControllerInterface;
 use Model\Managers\UserManager;
+use App\Session;
 
 class SecurityController extends AbstractController{
     // contiendra les méthodes liées à l'authentification : register, login et logout
@@ -75,6 +76,18 @@ class SecurityController extends AbstractController{
     public function logout () {
         unset($_SESSION["user"]);
         header("Location: index.php");
+    }
+
+    
+    public function profile() {
+        $userId = $_SESSION['user']->getId();
+        $userManager = new UserManager();
+        $user = $userManager->findOneById($userId);
+        return [
+            "view" => VIEW_DIR."forum/profile.php",
+            "meta_description" => "Page profile",
+            "data" => ["user" => $user]
+        ];
     }
 }
 
