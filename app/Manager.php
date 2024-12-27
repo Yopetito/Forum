@@ -82,7 +82,7 @@ abstract class Manager{
     }
     
     protected function getMultipleResults($rows, $class){
-
+    
         if(is_iterable($rows)){
             return $this->generate($rows, $class);
         }

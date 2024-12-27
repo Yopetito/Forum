@@ -34,4 +34,27 @@ class TopicManager extends Manager{
         DAO::update($sql, ['locked' => $locked, 'id' => $id]);
     }
 
+    public function postPerTopic(){
+        $sql = "SELECT
+                    t.id_topic,
+                    t.title,
+                    t.user_id,
+                    COUNT(p.id_post) AS totalPostsDansTopic
+                FROM
+                    topic t
+                INNER JOIN 
+                    post p ON t.id_topic = p.topic_id
+                INNER JOIN
+                    user u ON t.user_id = u.id_user
+                GROUP BY
+                    t.id_topic, t.title, u.nickname
+                ORDER BY
+                    totalPostsDansTopic DESC
+                LIMIT 5";
+        
+        return $this->getMultipleResults(
+            DAO::select($sql), 
+            $this->className
+        );
+    }
 }

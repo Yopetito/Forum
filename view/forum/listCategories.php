@@ -1,5 +1,6 @@
 <?php
     $categories = $result["data"]['categories']; 
+    $hotTopics = $result["data"]['hots'];
 ?>
 
 <h1>Liste des catégories</h1>
@@ -17,9 +18,12 @@
     <div class="category-box">
         <h3>hot topics</h3>
         <?php
-        for($i = 1; $i <= 5; $i++){ ?>
+        foreach($hotTopics as $hotTopic){ ?>
             <div class="category-item">
-                <p>Hot topic</p>
+                <p><?= $hotTopic->getTitle() ?></p>
+                <p>Nombre de posts:<?= $hotTopic->getTotalPostsDansTopic() ?></p>
+                
+
             </div>
     <?php } ?>
     </div>
