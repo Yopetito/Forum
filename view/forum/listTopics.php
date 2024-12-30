@@ -5,7 +5,7 @@
 ?>
 
 <h1>Liste des topics</h1>
-
+<a href="index.php?ctrl=forum&action=index" class="btn-return"><i class="fa-solid fa-rotate-left"> Categories</i></a>
 <div class="list-box">
     <?php
     foreach($topics as $topic){ ?>

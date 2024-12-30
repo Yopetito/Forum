@@ -1,17 +1,14 @@
 <?php
     $topic = $result["data"]['topic']; 
     $posts = $result["data"]['posts']; 
-    
+    $categoryId = $topic->getCategory()->getId();
 ?>
 
 <h1>Liste des posts</h1>
-
+<a href="index.php?ctrl=topic&action=listTopicsByCategory&id=<?= $categoryId ?>" class="btn-return"><i class="fa-solid fa-rotate-left"> topics</i></a>
 <div class="list-box">
     <?php 
-    // if($posts == null) {
-    //     echo "ya rien";
-    // }
-    // var_dump($posts);die;
+
     foreach($posts as $post ){ ?>
     <div class="list-item">
         <p>par <?= $post->getUser() ? $post->getUser() : "utilisateur supprimé"  ?> 
