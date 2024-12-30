@@ -13,19 +13,4 @@ class HomeController extends AbstractController implements ControllerInterface {
             "meta_description" => "Page d'accueil du forum"
         ];
     }
-        
-    public function users(){
-        $this->restrictTo("ROLE_ADMIN");
-
-        $manager = new UserManager();
-        $users = $manager->findAll(['registrationDate', 'DESC']);
-
-        return [
-            "view" => VIEW_DIR."security/users.php",
-            "meta_description" => "Liste des utilisateurs du forum",
-            "data" => [ 
-                "users" => $users 
-            ]
-        ];
-    }
 }

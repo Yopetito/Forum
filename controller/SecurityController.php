@@ -100,6 +100,28 @@ class SecurityController extends AbstractController{
             "data" => ["user" => $user]
         ];
     }
+
+    public function users(){
+        $this->restrictTo("ROLE_ADMIN");
+
+        $manager = new UserManager();
+        $users = $manager->findAll(['registrationDate', 'DESC']);
+
+        return [
+            "view" => VIEW_DIR."security/users.php",
+            "meta_description" => "Liste des utilisateurs du forum",
+            "data" => [ 
+                "users" => $users 
+            ]
+        ];
+    }
+
+    public function deleteUser($id) {
+        $userManager = new UserManager();
+        $userManager->delete($id);
+        header("Location: index.php?ctrl=security&action=users");
+        exit;
+    }
 }
 
 // POUR LE LOGIN:
