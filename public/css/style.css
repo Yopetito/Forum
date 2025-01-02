@@ -24,24 +24,37 @@ body {
     height: 100dvh;
 }
 /* =========================TABLE LISTE UTILISATEURS======================== */
+.users-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
 .users-table th, td{
     padding: 5px;
 }
+
+.users-table th{
+    color: var(--principal-color);
+}
+
 
 /* =========================LISTE DES CATEGORIES + HOT TOPICS================= */
 
 .main-category-container{
     display: flex;
     align-items: flex-start;
-    justify-content: center;
+    justify-content: space-between;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 20px;
     width: 100%;
-    height: auto;
 }
 
 .category-container {
-    flex-grow: 1;
+    flex: 1 1 45%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .category-container h2 {
@@ -49,43 +62,32 @@ body {
     color: var(--principal-color);
 }
 
-.category-box-left {
+.category-box {
     background-color: #9fc8e0;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 10px; 
+    padding: 10px;
     border-radius: 15px;
-    padding-bottom: 10px;
-    padding-top: 10px;
+    min-width: 300px;
+    border: solid 1px #007a9c;
+    box-shadow: 0 0 5px rgba(0, 122, 156, 0.5);
     flex: 1;
-    min-width: 250px;
-}
-
-.category-box-right {
-    background-color: #9fc8e0;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    border-radius: 15px;
-    padding-bottom: 10px;
     padding-top: 10px;
-    flex: 2;
-    min-width: 400px;
+    padding-bottom: 10px;
 }
 
-
-.category-box h3 {
-    text-align: center;
-}
 .category-item {
+    display: flex;
+    justify-content: space-between;
     border: solid 1px var(--border-color);
-    margin: 0 10%;
+    margin: 0;
     padding: 10px;
     border-radius: 20px;
     background-color: var(--bg-color);
 }
 
-.category-item p:hover {
+.category-box a:hover {
     color: red;
 }
 
@@ -109,6 +111,7 @@ body {
     padding: 10px;
     border-radius: 15px;
     background-color: var(--bg-color);
+
 }
 
 .list-item.even {
@@ -196,7 +199,7 @@ a {
 .form-register input[type="email"]:focus,
 .form-register input[type="nickname"]:focus,
 .form-register input[type="password"]:focus {
-    border-color: #007a9c; /* Focus */
+    border-color: #007a9c;
     box-shadow: 0 0 5px rgba(0, 122, 156, 0.5);
 }
 
@@ -215,7 +218,29 @@ input[type="submit"]:hover {
     background-color: #005f76;
 }
 
-/* ======================================= */
+/* ================PROFILE======================= */
+.profile {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.9);
+    width: 40%;
+    margin: 20px auto; 
+}
+
+.profile p {
+    margin: 10px 0;
+    font-size: 20px;
+    color: #303030;
+}
+
+.profile-title {
+    font-weight: 500; 
+    color: #007a9c; 
+}
+
+/* ==================NAVBAR ==================*/
+
 #wrapper {
     display: flex;
     flex-direction: column;
@@ -230,7 +255,7 @@ input[type="submit"]:hover {
 #nav-left {
     width: 250px;
     background-color: #f4f4f4;
-    border-right: 1px solid #ddd;
+    border: 1px solid #ddd;
     height: 50%;
     overflow-y: auto;
     display: flex;

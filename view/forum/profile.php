@@ -10,7 +10,7 @@
 <h1>Données de <?= $user ?></h1>
 
 <div class="profile">
-    <p>Nickname: <?= $pseudo ?></p>
-    <p>Email: <?= $email ?></p>
-    <p>Date d'inscription: <?= $registrationDate ?></p>
+    <p><span class="profile-title">Nickname:</span> <?= $pseudo ?></p>
+    <p><span class="profile-title">Email:</span> <?= $email ?></p>
+    <p><span class="profile-title">Date d'inscription:</span> <?= $registrationDate ?></p>
 </div>
