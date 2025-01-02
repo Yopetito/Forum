@@ -165,7 +165,7 @@ a {
 }
 
 .form-register {
-    background-color: #9fc8e0; /* Fond du formulaire */
+    background-color: #9fc8e0; 
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -177,7 +177,7 @@ a {
 
 .form-register label {
     font-weight: bold;
-    color: #007a9c; /* Couleur du texte des labels */
+    color: #007a9c; 
 }
 
 .form-register input[type="email"],
@@ -212,7 +212,7 @@ a {
 }
 
 input[type="submit"]:hover {
-    background-color: #005f76; /* Légèrement plus foncé au survol */
+    background-color: #005f76;
 }
 
 /* ======================================= */
