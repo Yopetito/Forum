@@ -9,5 +9,8 @@
 
 <h1>Données de <?= $user ?></h1>
 
-<p>Email: <?= $email ?></p>
-<p>Date d'inscription: <?= $registrationDate ?></p>
+<div class="profile">
+    <p>Nickname: <?= $pseudo ?></p>
+    <p>Email: <?= $email ?></p>
+    <p>Date d'inscription: <?= $registrationDate ?></p>
+</div>

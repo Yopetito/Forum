@@ -23,42 +23,73 @@ body {
     width: 100%;
     height: 100dvh;
 }
+/* =========================TABLE LISTE UTILISATEURS======================== */
+.users-table th, td{
+    padding: 5px;
+}
 
-/* =========================AFFICHAGE DES LISTES================= */
+/* =========================LISTE DES CATEGORIES + HOT TOPICS================= */
 
 .main-category-container{
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%;
+    height: auto;
 }
 
-.category-box {
+.category-container {
+    flex-grow: 1;
+}
+
+.category-container h2 {
+    text-align: center;
+    color: var(--principal-color);
+}
+
+.category-box-left {
+    background-color: #9fc8e0;
     display: flex;
     flex-direction: column;
     gap: 10px;
     border-radius: 15px;
-    background-color: #9fc8e0;
-    margin-left: 5%;
-    margin-right: 5%;
-    width: 35%;
     padding-bottom: 10px;
+    padding-top: 10px;
+    flex: 1;
+    min-width: 250px;
 }
+
+.category-box-right {
+    background-color: #9fc8e0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-radius: 15px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    flex: 2;
+    min-width: 400px;
+}
+
 
 .category-box h3 {
     text-align: center;
 }
 .category-item {
     border: solid 1px var(--border-color);
-    margin-right: 10%;
-    margin-left: 10%;
+    margin: 0 10%;
     padding: 10px;
     border-radius: 20px;
     background-color: var(--bg-color);
 }
 
-.category-item a:hover {
+.category-item p:hover {
     color: red;
 }
+
+/* =================== LISTE DES TOPICS / POSTS========================== */
 
 .list-box {
     display: flex;
@@ -66,22 +97,122 @@ body {
     gap: 5px;
     border-radius: 15px;
     background-color: #9fc8e0;
-    margin-left: 5%;
-    margin-right: 5%;
-    padding-bottom: 15px;
+    padding: 5px;
 }
 
 .list-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     border: solid 1px var(--border-color);
-    margin-right: 2%;
-    margin-left: 2%;
+    margin: 0 2%;
     padding: 10px;
-    border-radius: 20px;
+    border-radius: 15px;
     background-color: var(--bg-color);
 }
 
+.list-item.even {
+    background-color: #c4c4c4;
+}
+.list-item.odd {
+    background-color: #fff;
+}
 a {
     color: black;
+}
+
+.topic-info {
+    flex-grow: 1;
+}
+
+.lock-button a {
+    padding: 5px 10px;
+    border: 2px solid var(--principal-color);
+    border-radius: 10px; 
+    background-color: var(--principal-color); 
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.lock-button a:hover {
+    background-color: white;
+    color: var(--principal-color);
+}
+
+/* ====================FORM NOUVEAU TOPIC================================= */
+
+.form-style {
+    border: 1px solid;
+    border-radius: 15px;
+    margin: 10px 0;
+    background-color: #e6e6e6;
+}
+
+.form-info {
+    margin: 5px;
+}
+
+.form-info input, textarea {
+    border-radius: 10px;
+}
+
+/* =========================REGISTER FORMULAIRE===================== */
+.register-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-register {
+    background-color: #9fc8e0; /* Fond du formulaire */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-register label {
+    font-weight: bold;
+    color: #007a9c; /* Couleur du texte des labels */
+}
+
+.form-register input[type="email"],
+.form-register input[type="nickname"],
+.form-register input[type="password"] {
+    padding: 10px;
+    border: 1px solid #007a9c;
+    border-radius: 5px;
+    background-color: #ffffff;
+    color: #333;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.form-register input[type="email"]:focus,
+.form-register input[type="nickname"]:focus,
+.form-register input[type="password"]:focus {
+    border-color: #007a9c; /* Focus */
+    box-shadow: 0 0 5px rgba(0, 122, 156, 0.5);
+}
+
+.form-register input[type="submit"] {
+    background-color: #007a9c;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #005f76; /* Légèrement plus foncé au survol */
 }
 
 /* ======================================= */

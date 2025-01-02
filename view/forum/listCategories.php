@@ -3,29 +3,37 @@
     $hotTopics = $result["data"]['hots'];
 ?>
 
-<h1>Liste des catégories</h1>
+
 <div class="main-category-container">
-    <div class="category-box">
-        <h3>Liste des gatégories</h3>
-        <?php
-        foreach($categories as $category ){ ?>
-            <div class="category-item">
-                <p><a href="index.php?ctrl=topic&action=listTopicsByCategory&id=<?= $category->getId() ?>"><?= $category->getName() ?></a></p>
-            </div>
-    <?php } ?>
+    <div class="category-container">
+        <h2>Liste des gatégories</h2>
+        <div class="category-box-left">
+            <?php
+            //Liste des catégories existantes en BDD. 
+            foreach($categories as $category ){ ?>
+                <a href="index.php?ctrl=topic&action=listTopicsByCategory&id=<?= $category->getId() ?>">
+                <div class="category-item">
+                    <p><?= $category->getName() ?></p>
+                </div>
+                </a>
+        <?php } ?>
+        </div>
     </div>
-
-    <div class="category-box">
-        <h3>hot topics</h3>
-        <?php
-        foreach($hotTopics as $hotTopic){ ?>
-            <div class="category-item">
-                <p><?= $hotTopic->getTitle() ?></p>
-                <p>Nombre de posts:<?= $hotTopic->getTotalPostsDansTopic() ?></p>
-                
-
-            </div>
-    <?php } ?>
+    
+    <!-- Liste des 5 topics avec le plus de posts = Hot topics -->
+    <div class="category-container">
+        <h2>hot topics</h2>
+        <div class="category-box-right">
+            <?php
+            foreach($hotTopics as $hotTopic){ ?>
+                <a href="index.php?ctrl=post&action=listPostInTopic&id=<?=$hotTopic->getId() ?>">
+                    <div class="category-item">
+                        <p><?= $hotTopic->getTitle() ?></p>
+                        <p>Nombre de posts: <?= $hotTopic->getTotalPostsDansTopic() ?></p>
+                    </div>
+                </a>
+        <?php } ?>
+        </div>
     </div>
 </div>
 
