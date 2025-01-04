@@ -166,6 +166,10 @@ a {
     color: var(--principal-color);
 }
 
+.profile a{
+    color: red;
+}
+
 /* ====================FORM NOUVEAU TOPIC================================= */
 
 .form-style {
