@@ -23,6 +23,13 @@ body {
     width: 100%;
     height: 100dvh;
 }
+
+.img-principal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
 /* =========================TABLE LISTE UTILISATEURS======================== */
 .users-info {
     display: flex;
@@ -143,6 +150,22 @@ a {
     color: var(--principal-color);
 }
 
+.delete-button a {
+    padding: 5px 10px;
+    border: 2px solid var(--principal-color);
+    border-radius: 10px; 
+    background-color: var(--principal-color); 
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    margin-left: 2px;
+}
+
+.delete-button a:hover {
+    background-color: white;
+    color: var(--principal-color);
+}
+
 /* ====================FORM NOUVEAU TOPIC================================= */
 
 .form-style {
@@ -232,11 +255,12 @@ input[type="submit"]:hover {
     margin: 10px 0;
     font-size: 20px;
     color: #303030;
+    border-bottom: solid 1px black;
 }
 
 .profile-title {
     font-weight: 500; 
-    color: #007a9c; 
+    color: #007a9c;
 }
 
 /* ==================NAVBAR ==================*/

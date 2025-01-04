@@ -26,13 +26,20 @@
             <!-- Vérouillage du topic >>>> si l'utilisateur est connecté && utilateur est propriaitre du topic || l'utilisateur a le role ADMIN  -->
             <?php if(App\Session::getUser() && ($topic->getUser() && App\Session::getUser()->getId() == $topic->getUser()->getId()) || App\Session::isAdmin()) { ?>
                 <div class="lock-button">
+                    
                     <a href="index.php?ctrl=topic&action=lockTopic&id= <?= $topic->getId() ?>">
                     <!-- Condition topic vérouillé : Affichage cadénas fermé : ouvert -->
                     <?= $topic->getLocked() ? '<i class="fa-solid fa-lock"></i>' : '<i class="fa-solid fa-lock-open"></i>' ?>
                     </a>
                 </div>
+               
+                <!-- bouton supression -->
+                 <div class="delete-button">
+                    <a href="index.php?ctrl=security&action=deleteTopic&id= <?= $topic->getId() ?>"><i class="fa-solid fa-trash"></i></a>
+                </div>
             <?php } ?>
         </div> 
+        
         <!--  incrémentation de la var $i pour attribution de "odd" "even" dans le nom de la class-->
         <?php $i++; ?>
     </p>

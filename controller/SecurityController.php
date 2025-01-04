@@ -4,6 +4,7 @@ namespace Controller;
 use App\AbstractController;
 use App\ControllerInterface;
 use Model\Managers\UserManager;
+use Model\Managers\TopicManager;
 use App\Session;
 
 class SecurityController extends AbstractController{
@@ -120,6 +121,14 @@ class SecurityController extends AbstractController{
         $userManager = new UserManager();
         $userManager->delete($id);
         header("Location: index.php?ctrl=security&action=users");
+        exit;
+    }
+
+    public function deleteTopic($id) {
+        $topicManager = new TopicManager();
+        $topicManager->delete($id);
+        $url = $_SERVER['HTTP_REFERER']; // URL de la page précédente une fois le bouton clické (a savoir les topics dans category)
+        header("Location: $url");
         exit;
     }
 }
