@@ -251,8 +251,9 @@ input[type="submit"]:hover {
     padding: 15px;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.9);
-    width: 40%;
+    width: 60%;
     margin: 20px auto; 
+
 }
 
 .profile p {
@@ -282,7 +283,7 @@ input[type="submit"]:hover {
 
 #nav-left {
     width: 250px;
-    background-color: #f4f4f4;
+    background-color: #ffffff;
     border: 1px solid #ddd;
     height: 50%;
     overflow-y: auto;
@@ -316,6 +317,13 @@ input[type="submit"]:hover {
 #nav-left a span, #nav-right a span {
     margin-right: 10px;
     font-size: 20px;
+    color: var(--principal-color);
+}
+
+#nav-left i {
+    margin-right: 10px;
+    font-size: 20px;
+    color: var(--principal-color);
 }
 
 
@@ -332,3 +340,21 @@ footer {
     border-top: 1px solid #ddd;
 }
 
+.nav-responsive {
+    display: none;
+}
+
+/* ==========RESPONSIVE ============ */
+/* Pour les téléphones */
+@media screen and (max-width: 576px) {
+    #nav-left, #nav-right {
+        display: none;
+    }
+}
+
+/* Pour les tablettes */
+@media screen and (min-width: 577px) and (max-width: 768px) {
+    #nav-left, #nav-right {
+        display: none;
+    }
+}

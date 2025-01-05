@@ -23,7 +23,7 @@
                             <?php
                             if(App\Session::isAdmin()){
                                 ?>
-                                <a href="index.php?ctrl=security&action=users">Voir la liste des gens</a>
+                                <a href="index.php?ctrl=security&action=users"><i class="fa-solid fa-table-list"></i>Voir la liste des gens</a>
                             <?php } ?>
                         </div>
                         <div id="nav-right">
@@ -32,16 +32,16 @@
                             if(App\Session::getUser()){
                                 ?>
                                 <div class="nav-profile">
-                                    <a href="index.php?ctrl=security&action=profile"><span class="fas fa-user"></span>&nbsp;<?= App\Session::getUser()?></a>
+                                    <a href="index.php?ctrl=security&action=profile"><span class="fas fa-user"></span>&nbsp;Profil</a>
+                                </div>
+                                <div class="nav-homepage">
+                                    <a href="index.php"><span class="fa-solid fa-house"></span>Page principale</a>
+                                </div>
+                                <div class="nav-category">
+                                    <a href="index.php?ctrl=forum&action=index"><span class="fa-solid fa-layer-group"></span>Liste des catégories</a>
                                 </div>
                                 <div class="nav-logout">
                                 <a href="index.php?ctrl=security&action=logout"><span class="fa-solid fa-share-from-square"></span>Déconnexion</a>   
-                                </div>
-                                <div class="nav-homepage">
-                                <a href="index.php"><span class="fa-solid fa-house"></span>Page principale</a>
-                                </div>
-                                <div class="nav-category">
-                                <a href="index.php?ctrl=forum&action=index"><span class="fa-solid fa-layer-group"></span>Liste des catégories</a>
                                 </div>
                                 <?php
                             }
