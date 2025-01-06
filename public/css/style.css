@@ -45,6 +45,14 @@ body {
     color: var(--principal-color);
 }
 
+.users-info a {
+    border: 1px solid var(--principal-color);
+    border-radius: 20px;
+    padding: 1px 5px;
+    background-color: var(--principal-color);
+    color: white;
+}
+
 
 /* =========================LISTE DES CATEGORIES + HOT TOPICS================= */
 
@@ -189,10 +197,6 @@ a {
     color: var(--principal-color);
 }
 
-.profile a{
-    color: red;
-}
-
 /* ====================FORM NOUVEAU TOPIC================================= */
 
 .form-style {
@@ -211,6 +215,18 @@ a {
 }
 
 /* =========================REGISTER FORMULAIRE===================== */
+.edit-forms {
+    border: var(--principal-color) solid 1px;
+    border-radius: 10px;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    gap: 30px;
+    padding: 10px;
+    width: max-content;
+    margin: 0 auto;
+}
+
 .register-container {
     display: flex;
     align-items: center;
@@ -291,6 +307,16 @@ input[type="submit"]:hover {
     color: #007a9c;
 }
 
+.alert-delete {
+    color: red;
+}
+
+.bouton-profile {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    padding-top: 3px;
+}
 /* ==================NAVBAR ==================*/
 
 #wrapper {

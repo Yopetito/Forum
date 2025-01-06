@@ -6,48 +6,51 @@ use App\ControllerInterface;
 use Model\Managers\UserManager;
 use Model\Managers\TopicManager;
 use App\Session;
+use App\DAO;
 
 class SecurityController extends AbstractController{
     // contiendra les méthodes liées à l'authentification : register, login et logout
 
     public function register () {
-        $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
-        $nickname = filter_input(INPUT_POST, 'nickname', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $pass1 = filter_input(INPUT_POST, 'pass1', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $pass2 = filter_input(INPUT_POST, 'pass2', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        if (isset($_POST['submit'])) {
+            $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
+            $nickname = filter_input(INPUT_POST, 'nickname', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $pass1 = filter_input(INPUT_POST, 'pass1', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $pass2 = filter_input(INPUT_POST, 'pass2', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-        $passwordPattern = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]{12,}$/';
-        $validPassword = filter_var($pass1, FILTER_VALIDATE_REGEXP, [
-            "options" => ["regexp" => $passwordPattern]
-        ]);
+            $passwordPattern = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]{12,}$/';
+            $validPassword = filter_var($pass1, FILTER_VALIDATE_REGEXP, [
+                "options" => ["regexp" => $passwordPattern]
+            ]);
 
 
-        if($email && $nickname && $pass1 && $pass2) {
+            if($email && $nickname && $pass1 && $pass2) {
 
-            if (!$validPassword) {
-                var_dump("Mot de passe invalide : minimum 12 caractères, avec au moins 1 majuscule, 1 minuscule, 1 chiffre et 1 caractère spécial.");die;
-            }
-            
-            $userManager = new UserManager();
-            $user = $userManager->findOneByMail($email);
+                if (!$validPassword) {
+                    var_dump("Mot de passe invalide : minimum 12 caractères, avec au moins 1 majuscule, 1 minuscule, 1 chiffre et 1 caractère spécial.");die;
+                }
+                
+                $userManager = new UserManager();
+                $user = $userManager->findOneByMail($email);
 
-            // si le mail existe
-            if($user) {
-                var_dump("email existe");die;
-            } else {
-                $pseudo = $userManager->findOneByNickname($nickname);
-                //si le nickname existe
-                if($pseudo){
-                    var_dump("nickname existe");die;
+                // si le mail existe
+                if($user) {
+                    var_dump("email existe");die;
                 } else {
-                    if($pass1 == $pass2) {
-                        $userManager->add([
-                            'email' => $email,
-                            'nickname' => $nickname,
-                            'password' => password_hash($pass1, PASSWORD_DEFAULT)
-                        ]);
+                    $pseudo = $userManager->findOneByNickname($nickname);
+                    //si le nickname existe
+                    if($pseudo){
+                        var_dump("nickname existe");die;
                     } else {
-                        var_dump("les mdp sont pas identique");die;
+                        if($pass1 == $pass2) {
+                            $userManager->add([
+                                'email' => $email,
+                                'nickname' => $nickname,
+                                'password' => password_hash($pass1, PASSWORD_DEFAULT)
+                            ]);
+                        } else {
+                            var_dump("les mdp sont pas identique");die;
+                        }
                     }
                 }
             }
@@ -130,6 +133,100 @@ class SecurityController extends AbstractController{
         $url = $_SERVER['HTTP_REFERER']; // URL de la page précédente une fois le bouton clické (a savoir les topics dans category)
         header("Location: $url");
         exit;
+    }
+
+    public function editUser() {
+        //MODIFICATION DU MAIL    
+        if (isset($_POST['submit-email'])) {
+            $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
+
+            if($email) {
+                $userManager = new UserManager();
+                $user = $userManager->findOneByMail($email);
+
+                if($user) {
+                    var_dump("email existe");die;
+                } else { 
+                    $sql = "UPDATE user
+                            SET email = :email
+                            WHERE id_user = :id";
+                    $params = [
+                        ":email" => $email,
+                        ":id" => $_SESSION["user"]->getId()
+                    ];
+
+                    DAO::update($sql, $params);
+                    header("Location: index.php?ctrl=security&action=profile");
+                    exit;
+                }
+            }
+        //MODIFICATION DU NICKNALME
+        } elseif (isset($_POST['submit-nickname'])) {
+            $nickname = filter_input(INPUT_POST, 'nickname', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+            if($nickname) {
+                $userManager = new UserManager();
+                $user = $userManager->findOneByNickname($nickname);
+
+                if($user) {
+                    var_dump("nickname existe");die;
+                } else { 
+                    $sql = "UPDATE user
+                            SET nickname = :nickname
+                            WHERE id_user = :id";
+                    $params = [
+                        ":nickname" => $nickname,
+                        ":id" => $_SESSION["user"]->getId()
+                    ];
+
+                    DAO::update($sql, $params);
+                    header("Location: index.php?ctrl=security&action=profile");
+                    exit;
+                }
+            }
+        //MODIFICATION DU MDP
+        } elseif (isset($_POST['submit-password'])) {
+            $pass1 = filter_input(INPUT_POST, 'pass1', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $pass2 = filter_input(INPUT_POST, 'pass2', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $pass3 = filter_input(INPUT_POST, 'pass3', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+            $passwordPattern = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]{12,}$/';
+            $validPassword = filter_var($pass2, FILTER_VALIDATE_REGEXP, [
+                "options" => ["regexp" => $passwordPattern]
+            ]);
+
+            if($pass1 && $pass2 && $pass3) {
+                if (!$validPassword) {
+                    var_dump("Mot de passe invalide : minimum 12 caractères, avec au moins 1 majuscule, 1 minuscule, 1 chiffre et 1 caractère spécial.");die;
+                }
+                
+                $userManager = new UserManager(); 
+                $user = $userManager->findOneById($_SESSION["user"]->getId());
+
+                if($user) {
+                    $hash = $user->getPassword();
+                    if(password_verify($pass1, $hash) && $pass2 == $pass3) {
+                        $sql = "UPDATE user
+                                SET password = :password
+                                WHERE id_user = :id";
+                        $params = [
+                            ":password" => password_hash($pass2, PASSWORD_DEFAULT),
+                            ":id" => $_SESSION["user"]->getId()
+                        ];
+    
+                        DAO::update($sql, $params);
+                        header("Location: index.php?ctrl=security&action=profile");
+                        exit;
+                    } else { 
+                        var_dump("Old password invalid or new password not correct");die;
+                    }
+                }
+            }
+        }
+        return [
+            "view" => VIEW_DIR."security/edit.php",
+            "meta_description" => "edition des données de l'utilisateur"
+        ];
     }
 }
 
