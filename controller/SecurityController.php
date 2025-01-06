@@ -62,26 +62,27 @@ class SecurityController extends AbstractController{
     }
 
     public function login () {
-        $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
-        $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        if(isset($_POST["submit"])) {
+            $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
+            $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-        if($email && $password){
-            $userManager = new UserManager();
-            $user = $userManager->findOneByMail($email);
-            if($user) {
-                $hash = $user->getPassword();
-                if(password_verify($password, $hash)) {
-                    $_SESSION["user"] = $user;
-                    header("Location: index.php"); exit;
+            if($email && $password){
+                $userManager = new UserManager();
+                $user = $userManager->findOneByMail($email);
+                if($user) {
+                    $hash = $user->getPassword();
+                    if(password_verify($password, $hash)) {
+                        $_SESSION["user"] = $user;
+                        header("Location: index.php"); exit;
+                    } else {
+                        header("Location: index.php"); exit;
+                    }
                 } else {
-                    header("Location: index.php"); exit;
+                    var_dump("pas connecté");die;
                 }
-            } else {
-                var_dump("pas connecté");die;
-                header("Location: index.php"); exit;
             }
-        }
 
+        }
         return [
             "view" => VIEW_DIR."security/login.php",
             "meta_description" => "Se connecter"
