@@ -15,10 +15,11 @@ if(!empty($topic) && !empty($posts)) {
         $class = $i % 2 === 0 ? 'even' : 'odd'; ?>
         <div class="list-item <?= $class ?>">
             <!-- affichage de l'information des posts dans un tipic a l'aide des getters -->
-            <p>par <?= $post->getUser() ? $post->getUser() : "utilisateur supprimé"  ?> 
-            le <?= $post->getCreationDate() ?> 
-            <p class="post-content"><?= $post ?></p>
+            <p>
+                par <?= $post->getUser() ? $post->getUser() : "utilisateur supprimé"  ?> 
+                le <?= $post->getCreationDate() ?> 
             </p>
+            <p class="post-content"><?= $post ?></p>
         </div>
         <!--  incrémentation de la var $i pour attribution de "odd" "even" dans le nom de la class-->
         <?php $i++; ?>
