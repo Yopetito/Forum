@@ -15,7 +15,7 @@ if(!empty($topics) && !empty($category)) { ?>
         foreach($topics as $topic){ 
         $class = $i % 2 === 0 ? 'even' : 'odd'; ?>
         <p>
-            <div class="list-item <?= $class ?>"> <!-- div avec la class dynamique -->
+            <div class="list-item-topic <?= $class ?>"> <!-- div avec la class dynamique -->
                 
             <!-- affichage de l'information de chaque topic dans la categorie a l'aide des getters -->
                 <div class="topic-info">

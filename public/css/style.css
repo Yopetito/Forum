@@ -122,6 +122,18 @@ body {
 
 }
 
+.list-item-topic {
+    display: flex;
+    align-items: left;
+    justify-content: space-between;
+    border: solid 1px var(--border-color);
+    margin: 0 2%;
+    padding: 10px;
+    border-radius: 15px;
+    background-color: var(--bg-color);
+
+}
+
 .list-item.even {
     background-color: #c4c4c4;
 }
