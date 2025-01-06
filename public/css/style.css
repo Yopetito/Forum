@@ -111,8 +111,9 @@ body {
 
 .list-item {
     display: flex;
-    align-items: center;
+    align-items: left;
     justify-content: space-between;
+    flex-direction: column;
     border: solid 1px var(--border-color);
     margin: 0 2%;
     padding: 10px;
@@ -131,8 +132,18 @@ a {
     color: black;
 }
 
+.post-content {
+    border-top: solid 1px black;
+    padding-top: 5px;
+}
 .topic-info {
     flex-grow: 1;
+}
+
+.topic-info a {
+    border-bottom: 1px solid black;
+    display: block;
+    padding-bottom: 5px;
 }
 
 .lock-button a {
