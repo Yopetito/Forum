@@ -1,4 +1,6 @@
 <?php
+use App\Session;
+
 $topic = $result["data"]['topic']; 
 $posts = $result["data"]['posts']; 
 if(!empty($topic) && !empty($posts)) { 
@@ -26,7 +28,7 @@ if(!empty($topic) && !empty($posts)) {
         <?php } ?>
     </div>
 <?php } else {
-    echo "Topic non existant";
+    var_dump("Ce topic n'existe pas");die;
 } 
 
 //Si l'utilisateur est connecté : formulaire de création d'un nouveau topic avec un premier message

@@ -47,7 +47,7 @@ if(!empty($topics) && !empty($category)) { ?>
         <?php  } ?>
     </div>
 <?php } else { 
-    echo "Pas de topics dans cette category"; 
+        var_dump("Pas de topics connus! "); die;
     } ?>
 <!-- Si l'utilisateur est connecté : formulaire de création d'un nouveau topic avec un premier message -->
 <?php if(App\Session::getUser()) { ?>

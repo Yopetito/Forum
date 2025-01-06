@@ -31,6 +31,20 @@ body {
     align-items: center;
     flex-wrap: wrap;
 }
+
+.messages-flash {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: absolute;
+    top: 0; 
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    padding: 10px;
+    z-index: 1000;
+}
 /* =========================TABLE LISTE UTILISATEURS======================== */
 .users-info {
     display: flex;
@@ -382,6 +396,9 @@ input[type="submit"]:hover {
     padding: 20px;
 }
 
+#forum h1 {
+    margin-top: 10px;
+}
 
 footer {
     text-align: center;

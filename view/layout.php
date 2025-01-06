@@ -15,10 +15,14 @@
         <div id="wrapper"> 
             <div id="mainpage">
                 <!-- c'est ici que les messages (erreur ou succès) s'affichent-->
-                <h3 class="message" style="color: red"><?= App\Session::getFlash("error") ?></h3>
-                <h3 class="message" style="color: green"><?= App\Session::getFlash("success") ?></h3>
+                
+
                 <header>
                     <nav>
+                        <div class="messages-flash">
+                            <h3 class="message" style="color: red"><?= App\Session::getFlash("error") ?></h3>
+                            <h3 class="message" style="color: green"><?= App\Session::getFlash("success") ?></h3>
+                        </div>
                         <div id="nav-left">
                             <?php
                             if(App\Session::isAdmin()){

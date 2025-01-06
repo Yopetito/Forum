@@ -12,6 +12,8 @@ class SecurityController extends AbstractController{
     // contiendra les méthodes liées à l'authentification : register, login et logout
 
     public function register () {
+        Session::getUser();
+
         if (isset($_POST['submit'])) {
             $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
             $nickname = filter_input(INPUT_POST, 'nickname', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -27,7 +29,7 @@ class SecurityController extends AbstractController{
             if($email && $nickname && $pass1 && $pass2) {
 
                 if (!$validPassword) {
-                    var_dump("Mot de passe invalide : minimum 12 caractères, avec au moins 1 majuscule, 1 minuscule, 1 chiffre et 1 caractère spécial.");die;
+                    Session::addFlash("error", "Mot de passe invalide : minimum 12 caractères, avec au moins 1 majuscule, 1 minuscule, 1 chiffre et 1 caractère spécial.");
                 }
                 
                 $userManager = new UserManager();
@@ -35,12 +37,13 @@ class SecurityController extends AbstractController{
 
                 // si le mail existe
                 if($user) {
-                    var_dump("email existe");die;
+                    Session::addFlash("error", "le mail existe déjà veuillez choisir un autre.");
+                    // var_dump("email existe");die;
                 } else {
                     $pseudo = $userManager->findOneByNickname($nickname);
                     //si le nickname existe
                     if($pseudo){
-                        var_dump("nickname existe");die;
+                        Session::addFlash("error", "le nickname existe déjà veuillez choisir un autre.");
                     } else {
                         if($pass1 == $pass2) {
                             $userManager->add([
@@ -49,7 +52,7 @@ class SecurityController extends AbstractController{
                                 'password' => password_hash($pass1, PASSWORD_DEFAULT)
                             ]);
                         } else {
-                            var_dump("les mdp sont pas identique");die;
+                            Session::addFlash("error", "Les mot de passes sont pas identique.");
                         }
                     }
                 }
@@ -78,7 +81,7 @@ class SecurityController extends AbstractController{
                         header("Location: index.php"); exit;
                     }
                 } else {
-                    var_dump("pas connecté");die;
+                    Session::addFlash("error", "Email ou mot de passe érronée");
                 }
             }
 
@@ -92,6 +95,7 @@ class SecurityController extends AbstractController{
     public function logout () {
         unset($_SESSION["user"]);
         header("Location: index.php");
+        Session::addFlash("success", "Vous vous êtes bien déconecté, à bientôt ! ");
     }
 
     
@@ -124,6 +128,7 @@ class SecurityController extends AbstractController{
     public function deleteUser($id) {
         $userManager = new UserManager();
         $userManager->delete($id);
+        Session::addFlash("success", "utilisateur supprimé");
         header("Location: index.php?ctrl=security&action=users");
         exit;
     }
