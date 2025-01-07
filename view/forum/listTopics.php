@@ -24,7 +24,13 @@ if(!empty($topics) && !empty($category)) { ?>
                     <?= $topic->getUser() ? $topic->getUser() : "utilisateur supprimé" ?>  
                     <br> le <?= $topic->getCreationDate() ?>
                 </div>
-                
+                <div class="locked-topic">
+                    <?php if($topic->getLocked() == 1) { ?>
+                        <i class="fa-solid fa-lock"></i>
+                    <?php } elseif($topic->getLocked() == 0) { ?>
+                        <i class="fa-solid fa-lock-open"></i>
+                    <?php } ?>
+                </div>   
                 <!-- Vérouillage du topic >>>> si l'utilisateur est connecté && utilateur est propriaitre du topic || l'utilisateur a le role ADMIN  -->
                 <?php if(App\Session::getUser() && ($topic->getUser() && App\Session::getUser()->getId() == $topic->getUser()->getId()) || App\Session::isAdmin()) { ?>
                     <div class="boutons-topic">

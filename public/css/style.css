@@ -68,6 +68,28 @@ body {
     color: white;
 }
 
+/* ========================SETTINGS ========================== */
+.settings {
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.settings i {
+    padding: 5px 10px;
+    border: 2px solid var(--principal-color);
+    border-radius: 30px; 
+    background-color: var(--principal-color); 
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.settings i:hover {
+    background-color: white;
+    color: var(--principal-color);
+}
 
 /* =========================LISTE DES CATEGORIES + HOT TOPICS================= */
 
@@ -147,7 +169,9 @@ body {
 }
 
 .list-item-topic {
-    display: flex;
+    display: grid;
+    grid-template-columns: 3fr;
+    grid-template-rows: 2fr;
     align-items: left;
     justify-content: space-between;
     border: solid 1px var(--border-color);
@@ -155,6 +179,7 @@ body {
     padding: 10px;
     border-radius: 15px;
     background-color: var(--bg-color);
+    position: relative;
 
 }
 
@@ -183,8 +208,23 @@ a {
 }
 .boutons-topic {
     display: flex;
-    flex-direction: column;
-    gap: 25px;
+    flex-direction: row;
+    gap: 10px;
+    margin-top: 1%;
+}
+
+.locked-topic {
+    position: absolute;
+    top: 1%;
+    left: 95%;
+}
+
+.locked-topic .fa-lock {
+    color: red;
+}
+
+.locked-topic .fa-lock-open {
+    color: green;
 }
 
 .lock-button a {
