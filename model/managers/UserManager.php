@@ -39,4 +39,11 @@ class UserManager extends Manager{
         );
     }
 
+    public function updateEmail($email) {
+        $sql = "UPDATE user
+                SET email = :email
+                WHERE id_user = :id";
+        
+    }
+
 }
