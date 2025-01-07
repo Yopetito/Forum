@@ -57,7 +57,7 @@ if(!empty($topics) && !empty($category)) { ?>
     <label for="topic">Créee un nouveau topic:</label><br>
     <input type="text" name="topic" placeholder="Titre du topic..."><br>
     <label for="message_topic">écrivez votre premier message dans ce topic:</label><br>
-    <textarea name="message_topic" id="message_topic" cols="40" rows="5" placeholder="ecrivez votre message ici.."></textarea>
+    <textarea name="message_topic" required="required" id="message_topic" cols="40" rows="5" placeholder="ecrivez votre message ici.."></textarea>
     <input type="submit" name="submit" value="Envoyez!">
     </div>
 </form>

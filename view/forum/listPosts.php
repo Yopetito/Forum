@@ -38,7 +38,7 @@ if(App\Session::getUser()) {
         <form class="form-style" action="index.php?ctrl=post&action=addPost&id=<?= $topic->getId(); ?>" method="POST">
             <div class="form-info">
                 <label for="message">Ecrivez votre message ici:</label><br>
-                <textarea name="message" id="message" cols="40" rows="5"></textarea>
+                <textarea name="message" required="required" id="message" cols="40" rows="5"></textarea>
                 <input type="submit" name="submit" value="Envoyer le post!">
             </div>
         </form>
