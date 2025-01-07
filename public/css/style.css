@@ -260,7 +260,7 @@ footer {
     display: flex;
     flex-direction: column;
     gap: 5px;
-    background-color: #9fc8e0;
+    background-color: var(--box-color);
     padding: 5px;
 }
 
@@ -373,7 +373,7 @@ a {
     padding: 5px;
     border-radius: 15px;
     margin: 10px 0;
-    background-color: #9fc8e0;
+    background-color: var(--box-color);
 }
 
 .form-info {
@@ -474,7 +474,7 @@ input[type="submit"]:hover {
 
 .profile-title {
     font-weight: 500; 
-    color: #007a9c;
+    color: var(--principal-color);
 }
 
 .alert-delete {
