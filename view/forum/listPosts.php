@@ -28,7 +28,8 @@ if(!empty($topic) && !empty($posts)) {
         <?php } ?>
     </div>
 <?php } else {
-    var_dump("Ce topic n'existe pas");die;
+            header("Location: index.php");
+            exit;
 } 
 
 //Si l'utilisateur est connecté : formulaire de création d'un nouveau topic avec un premier message

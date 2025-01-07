@@ -47,7 +47,8 @@ if(!empty($topics) && !empty($category)) { ?>
         <?php  } ?>
     </div>
 <?php } else { 
-        var_dump("Pas de topics connus! "); die;
+           header("Location: index.php");
+           exit;
     } ?>
 <!-- Si l'utilisateur est connecté : formulaire de création d'un nouveau topic avec un premier message -->
 <?php if(App\Session::getUser()) { ?>
