@@ -5,6 +5,7 @@ use App\AbstractController;
 use App\ControllerInterface;
 use Model\Managers\UserManager;
 use Model\Managers\TopicManager;
+use Model\Managers\PostManager;
 use App\Session;
 use App\DAO;
 
@@ -135,7 +136,18 @@ class SecurityController extends AbstractController{
 
     public function deleteTopic($id) {
         $topicManager = new TopicManager();
-        $topicManager->delete($id);
+        $postManager = new PostManager();
+        if ($postManager->delete($id)) {
+            if ($topicManager->delete($id)) {
+                $url = $_SERVER['HTTP_REFERER'];
+                header("Location: $url");
+                exit;
+            } else {
+                echo "Erreur lors de la suppression du topic.";
+            }
+        } else {
+             echo "Erreur lors de la suppression des posts.";
+        }
         $url = $_SERVER['HTTP_REFERER']; // URL de la page précédente une fois le bouton clické (a savoir les topics dans category)
         header("Location: $url");
         exit;

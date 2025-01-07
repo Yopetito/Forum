@@ -47,9 +47,9 @@
                                 <div class="nav-logout">
                                 <a href="index.php?ctrl=security&action=logout"><span class="fa-solid fa-share-from-square"></span>Déconnexion</a>   
                                 </div>
-                                <div class="settings">
-                                    <i class="fa-solid fa-gear"></i>
-                                </div>
+
+
+ 
                                     
                                 <?php
                             }
@@ -62,6 +62,15 @@
                             <?php
                             }
                         ?>
+                        </div>
+                        <div class="settings">
+                            <i class="fa-solid fa-gear" id="settings-icon"></i>
+                            <div id="color-choice" class="color-choice">
+                                <div class="color" style="background-color: #007a9c;" data-color="#007a9c"></div>
+                                <div class="color" style="background-color: #589458;" data-color="#589458"></div>
+                                <div class="color" style="background-color: #CE86A4;" data-color="#CE86A4"></div>
+                                <div class="color" style="background-color: #C9C9A0;" data-color="#C9C9A0"></div>
+                            </div>
                         </div>
                     </nav>
                 </header>

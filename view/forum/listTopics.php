@@ -45,7 +45,7 @@ if(!empty($topics) && !empty($category)) { ?>
                     
                         <!-- bouton supression -->
                         <div class="delete-button">
-                            <a href="index.php?ctrl=security&action=deleteTopic&id= <?= $topic->getId() ?>"><i class="fa-solid fa-trash"></i></a>
+                            <a href="index.php?ctrl=security&action=deleteTopic&id=<?=$topic->getId()?>"><i class="fa-solid fa-trash"></i></a>
                         </div>
                     </div>
                 <?php } ?>

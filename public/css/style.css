@@ -5,6 +5,7 @@
     --bg-color: #d0dadd;
     --border-color: rgb(3, 43, 95);
     --principal-font: krub;
+    --box-color: #9fc8e0;
 }
 
 * {
@@ -70,12 +71,14 @@ body {
 
 /* ========================SETTINGS ========================== */
 .settings {
+    position: relative;
+    cursor: pointer;
     width: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-
+ 
 .settings i {
     padding: 5px 10px;
     border: 2px solid var(--principal-color);
@@ -89,7 +92,113 @@ body {
 .settings i:hover {
     background-color: white;
     color: var(--principal-color);
+} 
+
+#color-choice {
+    display: none;
+    position: absolute;
+    border-radius: 30px;
+    top: 30px;
+    left: 5px;
+    width: 60px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+
 }
+ 
+.color {
+    width: 30px;
+    height: 30px;
+    margin: 5px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+ 
+#settings-icon:hover {
+    color: #007bff;
+}
+
+/* ==================NAVBAR ==================*/
+
+#wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+#mainpage {
+    display: flex;
+    flex-grow: 1;
+}
+
+#nav-left {
+    width: 250px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    height: 50%;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+#nav-right {
+    border-right: 1px solid #ddd;
+}
+
+#nav-left div, #nav-right div {
+    display: flex;
+    flex-direction: column;
+}
+
+#nav-left a, #nav-right a {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    color: #333;
+    text-decoration: none;
+    font-size: 16px;
+    border-bottom: 1px solid #ddd;
+}
+
+#nav-left a:hover, #nav-right a:hover {
+    background-color: #e9e9e9;
+}
+
+#nav-left a span, #nav-right a span {
+    margin-right: 10px;
+    font-size: 20px;
+    color: var(--principal-color);
+}
+
+#nav-left i {
+    margin-right: 10px;
+    font-size: 20px;
+    color: var(--principal-color);
+}
+
+
+#forum {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+#forum h1 {
+    margin-top: 10px;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #f4f4f4;
+    border-top: 1px solid #ddd;
+}
+
+.nav-responsive {
+    display: none;
+}
+
 
 /* =========================LISTE DES CATEGORIES + HOT TOPICS================= */
 
@@ -115,14 +224,14 @@ body {
 }
 
 .category-box {
-    background-color: #9fc8e0;
+    background-color: var(--box-color);
     display: flex;
     flex-direction: column;
     gap: 10px; 
     padding: 10px;
     min-width: 300px;
-    border: solid 1px #007a9c;
-    box-shadow: 0 0 5px rgba(0, 122, 156, 0.5);
+    border: solid 1px var(--principal-color);
+    box-shadow: 0 0 20px rgba(0, 122, 156, 0.5);
     flex: 1;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -215,8 +324,8 @@ a {
 
 .locked-topic {
     position: absolute;
-    top: 1%;
-    left: 95%;
+    top: 3%;
+    left: 97%;
 }
 
 .locked-topic .fa-lock {
@@ -378,84 +487,8 @@ input[type="submit"]:hover {
     gap: 3px;
     padding-top: 3px;
 }
-/* ==================NAVBAR ==================*/
-
-#wrapper {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-}
-
-#mainpage {
-    display: flex;
-    flex-grow: 1;
-}
-
-#nav-left {
-    width: 250px;
-    background-color: #ffffff;
-    border: 1px solid #ddd;
-    height: 50%;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-}
-
-#nav-right {
-    border-right: 1px solid #ddd;
-}
-
-#nav-left div, #nav-right div {
-    display: flex;
-    flex-direction: column;
-}
-
-#nav-left a, #nav-right a {
-    display: flex;
-    align-items: center;
-    padding: 15px 20px;
-    color: #333;
-    text-decoration: none;
-    font-size: 16px;
-    border-bottom: 1px solid #ddd;
-}
-
-#nav-left a:hover, #nav-right a:hover {
-    background-color: #e9e9e9;
-}
-
-#nav-left a span, #nav-right a span {
-    margin-right: 10px;
-    font-size: 20px;
-    color: var(--principal-color);
-}
-
-#nav-left i {
-    margin-right: 10px;
-    font-size: 20px;
-    color: var(--principal-color);
-}
 
 
-#forum {
-    flex-grow: 1;
-    padding: 20px;
-}
-
-#forum h1 {
-    margin-top: 10px;
-}
-
-footer {
-    text-align: center;
-    padding: 10px;
-    background-color: #f4f4f4;
-    border-top: 1px solid #ddd;
-}
-
-.nav-responsive {
-    display: none;
-}
 
 /* ==========RESPONSIVE ============ */
 /* Pour les téléphones */
