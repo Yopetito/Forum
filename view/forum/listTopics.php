@@ -19,24 +19,28 @@ if(!empty($topics) && !empty($category)) { ?>
                 
             <!-- affichage de l'information de chaque topic dans la categorie a l'aide des getters -->
                 <div class="topic-info">
-                    <a href="index.php?ctrl=post&action=listPostInTopic&id=<?= $topic->getId() ?>"><?= $topic ?></a> 
-                    <br> par <?= $topic->getUser() ? $topic->getUser() : "utilisateur supprimé" ?>  
+                    <a href="index.php?ctrl=post&action=listPostInTopic&id=<?= $topic->getId() ?>"><span class="title">Sujet: </span><?= $topic ?></a> 
+                    <span class="title">Créateur:</span>
+                    <?= $topic->getUser() ? $topic->getUser() : "utilisateur supprimé" ?>  
                     <br> le <?= $topic->getCreationDate() ?>
                 </div>
                 
                 <!-- Vérouillage du topic >>>> si l'utilisateur est connecté && utilateur est propriaitre du topic || l'utilisateur a le role ADMIN  -->
                 <?php if(App\Session::getUser() && ($topic->getUser() && App\Session::getUser()->getId() == $topic->getUser()->getId()) || App\Session::isAdmin()) { ?>
-                    <div class="lock-button">
-                        
-                        <a href="index.php?ctrl=topic&action=lockTopic&id= <?= $topic->getId() ?>">
-                        <!-- Condition topic vérouillé : Affichage cadénas fermé : ouvert -->
-                        <?= $topic->getLocked() ? '<i class="fa-solid fa-lock"></i>' : '<i class="fa-solid fa-lock-open"></i>' ?>
-                        </a>
-                    </div>
-                
-                    <!-- bouton supression -->
-                    <div class="delete-button">
-                        <a href="index.php?ctrl=security&action=deleteTopic&id= <?= $topic->getId() ?>"><i class="fa-solid fa-trash"></i></a>
+                    <div class="boutons-topic">
+                        <!-- bouton lock -->
+                        <div class="lock-button">
+                            
+                            <a href="index.php?ctrl=topic&action=lockTopic&id= <?= $topic->getId() ?>">
+                            <!-- Condition topic vérouillé : Affichage cadénas fermé : ouvert -->
+                            <?= $topic->getLocked() ? '<i class="fa-solid fa-lock"></i>' : '<i class="fa-solid fa-lock-open"></i>' ?>
+                            </a>
+                        </div>
+                    
+                        <!-- bouton supression -->
+                        <div class="delete-button">
+                            <a href="index.php?ctrl=security&action=deleteTopic&id= <?= $topic->getId() ?>"><i class="fa-solid fa-trash"></i></a>
+                        </div>
                     </div>
                 <?php } ?>
             </div> 
