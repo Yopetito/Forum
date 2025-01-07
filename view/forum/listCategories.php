@@ -27,10 +27,10 @@
             <?php
             foreach($hotTopics as $hotTopic){ ?>
 
-                <a href="index.php?ctrl=post&action=listPostInTopic&id=<?=$hotTopic['id_topic'] ?>">
+                <a href="index.php?ctrl=post&action=listPostInTopic&id=<?=$hotTopic->getId() ?>">
                     <div class="category-item">
-                        <p><?= $hotTopic['title'] ?></p>
-                        <p>Nombre de posts: <?= $hotTopic['totalPosts'] ?></p>
+                        <p><?= $hotTopic->getTitle() ?></p>
+                        <p>Nombre de posts: <?= $hotTopic->getTotalPosts() ?></p>
                     </div>
                 </a>
             <?php } ?>

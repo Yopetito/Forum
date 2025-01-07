@@ -49,6 +49,9 @@ class TopicManager extends Manager{
                     totalPosts DESC
                 LIMIT 5";
         
-        return DAO::select($sql);
+        return $this->getMultipleResults(
+            DAO::select($sql),
+            $this->className
+        );
     }
 }

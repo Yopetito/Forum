@@ -15,11 +15,19 @@ final class Topic extends Entity{
     private $category;
     private $creationDate;
     private $locked;
+    private $totalPosts;
 
     public function __construct($data){         
         $this->hydrate($data);        
     }
 
+    
+    public function getTotalPosts(){
+        return $this->totalPosts;
+    }
+    public function setTotalPosts($totalPosts) {
+        $this->totalPosts = $totalPosts;
+    }
     
     /**
      * Get the value of id
