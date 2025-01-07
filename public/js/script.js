@@ -40,7 +40,7 @@ settingsIcon.addEventListener('click', function () {
 });
 
 // Appliquer un thème lorsqu'une couleur est sélectionnée
-//color seleccionant toutes les class .color, devenant ainsi un NodeList(tableau) et ainsi chaque index = une div differente.
+//colors seleccionant toutes les class .color, devenant ainsi un NodeList(tableau) et ainsi chaque index = une div differente.
 //Donc, theme = la couleur choisie (theme1 2 3). 
 colors.forEach((color, index) => {
     color.addEventListener('click', function () {
