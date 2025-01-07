@@ -47,10 +47,7 @@
                                 <div class="nav-logout">
                                 <a href="index.php?ctrl=security&action=logout"><span class="fa-solid fa-share-from-square"></span>Déconnexion</a>   
                                 </div>
-
-
  
-                                    
                                 <?php
                             }
                             else{
