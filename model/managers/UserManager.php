@@ -43,7 +43,35 @@ class UserManager extends Manager{
         $sql = "UPDATE user
                 SET email = :email
                 WHERE id_user = :id";
-        
+        $params = [
+            ":email" => $email,
+            ":id" => $_SESSION["user"]->getId()
+        ];
+
+        DAO::update($sql, $params);
     }
 
+    public function updateNickname($nickname) {
+        $sql = "UPDATE user
+                SET nickname = :nickname
+                WHERE id_user = :id";
+        $params = [
+            ":nickname" => $nickname,
+            ":id" => $_SESSION["user"]->getId()
+        ];
+
+        DAO::update($sql, $params);
+    }
+
+    public function updatePassword($password) {
+        $sql = "UPDATE user
+                SET password = :password
+                WHERE id_user = :id";
+        $params = [
+            ":password" => password_hash($password, PASSWORD_DEFAULT),
+            ":id" => $_SESSION["user"]->getId()
+        ];
+
+        DAO::update($sql, $params);
+    }
 }

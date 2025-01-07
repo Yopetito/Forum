@@ -160,44 +160,28 @@ class SecurityController extends AbstractController{
 
             if($email) {
                 $userManager = new UserManager();
-                $user = $userManager->findOneByMail($email);
+                $user = $userManager->updateEmail($email);
 
                 if($user) {
-                    var_dump("email existe");die;
+                    Session::addFlash("error", "votre mail n'a pas pu être modifié");
                 } else { 
-                    $sql = "UPDATE user
-                            SET email = :email
-                            WHERE id_user = :id";
-                    $params = [
-                        ":email" => $email,
-                        ":id" => $_SESSION["user"]->getId()
-                    ];
-
-                    DAO::update($sql, $params);
+                    Session::addFlash("success", "Votre mail a bien été modifié");
                     header("Location: index.php?ctrl=security&action=profile");
                     exit;
                 }
             }
-        //MODIFICATION DU NICKNALME
+        //MODIFICATION DU NICKNAME
         } elseif (isset($_POST['submit-nickname'])) {
             $nickname = filter_input(INPUT_POST, 'nickname', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
             if($nickname) {
                 $userManager = new UserManager();
-                $user = $userManager->findOneByNickname($nickname);
+                $user = $userManager->updateNickname($nickname);
 
                 if($user) {
-                    var_dump("nickname existe");die;
+                    Session::addFlash("error", "votre nickname n'a pas pu être modifié");
                 } else { 
-                    $sql = "UPDATE user
-                            SET nickname = :nickname
-                            WHERE id_user = :id";
-                    $params = [
-                        ":nickname" => $nickname,
-                        ":id" => $_SESSION["user"]->getId()
-                    ];
-
-                    DAO::update($sql, $params);
+                    Session::addFlash("success", "Votre nickname a bien été modifié");
                     header("Location: index.php?ctrl=security&action=profile");
                     exit;
                 }
@@ -215,7 +199,7 @@ class SecurityController extends AbstractController{
 
             if($pass1 && $pass2 && $pass3) {
                 if (!$validPassword) {
-                    var_dump("Mot de passe invalide : minimum 12 caractères, avec au moins 1 majuscule, 1 minuscule, 1 chiffre et 1 caractère spécial.");die;
+                    Session::addFlash("error", "Mot de passe invalide : minimum 12 caractères, avec au moins 1 majuscule, 1 minuscule, 1 chiffre et 1 caractère spécial.");
                 }
                 
                 $userManager = new UserManager(); 
@@ -224,19 +208,12 @@ class SecurityController extends AbstractController{
                 if($user) {
                     $hash = $user->getPassword();
                     if(password_verify($pass1, $hash) && $pass2 == $pass3) {
-                        $sql = "UPDATE user
-                                SET password = :password
-                                WHERE id_user = :id";
-                        $params = [
-                            ":password" => password_hash($pass2, PASSWORD_DEFAULT),
-                            ":id" => $_SESSION["user"]->getId()
-                        ];
-    
-                        DAO::update($sql, $params);
+                        $update = $userManager->updatePassword($pass2);
+                        Session::AddFlash("success", "Password modifié !");
                         header("Location: index.php?ctrl=security&action=profile");
                         exit;
                     } else { 
-                        var_dump("Old password invalid or new password not correct");die;
+                        Session::AddFlash("error", "Old password invalid or new password not correct");
                     }
                 }
             }
