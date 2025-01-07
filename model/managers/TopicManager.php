@@ -38,7 +38,7 @@ class TopicManager extends Manager{
         $sql = "SELECT
                     t.id_topic,
                     t.title,
-                    COUNT(p.id_post) AS totalPostsDansTopic
+                    COUNT(p.id_post) AS totalPosts
                 FROM
                     topic t
                 INNER JOIN 
@@ -46,12 +46,9 @@ class TopicManager extends Manager{
                 GROUP BY
                     t.id_topic, t.title
                 ORDER BY
-                    totalPostsDansTopic DESC
+                    totalPosts DESC
                 LIMIT 5";
         
-        return $this->getMultipleResults(
-            DAO::select($sql), 
-            $this->className
-        );
+        return DAO::select($sql);
     }
 }

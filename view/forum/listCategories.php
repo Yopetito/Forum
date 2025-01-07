@@ -1,6 +1,6 @@
 <?php
     $categories = $result["data"]['categories']; 
-    $hotTopics = $result["data"]['hots'];
+    $hotTopics = $result["data"]['hotTopics'];
 ?>
 
 
@@ -26,10 +26,11 @@
         <div class="category-box">
             <?php
             foreach($hotTopics as $hotTopic){ ?>
-                <a href="index.php?ctrl=post&action=listPostInTopic&id=<?=$hotTopic->getId() ?>">
+
+                <a href="index.php?ctrl=post&action=listPostInTopic&id=<?=$hotTopic['id_topic'] ?>">
                     <div class="category-item">
-                        <p><?= $hotTopic->getTitle() ?></p>
-                        <p>Nombre de posts: <?= $hotTopic->getTotalPostsDansTopic() ?></p>
+                        <p><?= $hotTopic['title'] ?></p>
+                        <p>Nombre de posts: <?= $hotTopic['totalPosts'] ?></p>
                     </div>
                 </a>
             <?php } ?>
