@@ -18,47 +18,58 @@
                 
 
                 <header>
+                    <div class="messages-flash">
+                        <h3 class="message" style="color: red"><?= App\Session::getFlash("error") ?></h3>
+                        <h3 class="message" style="color: green"><?= App\Session::getFlash("success") ?></h3>
+                    </div>
                     <nav>
-                        <div class="messages-flash">
-                            <h3 class="message" style="color: red"><?= App\Session::getFlash("error") ?></h3>
-                            <h3 class="message" style="color: green"><?= App\Session::getFlash("success") ?></h3>
+                        <div class="logo">
+                            <img src="public/img/logoforum.webp" alt="Logo" class="logoimg">
                         </div>
-                        <div id="nav-left">
-                            <?php
-                            if(App\Session::isAdmin()){
-                                ?>
-                                <a href="index.php?ctrl=security&action=users"><i class="fa-solid fa-table-list"></i>Voir la liste des gens</a>
-                            <?php } ?>
+                        <div class="slogan">
+                            <p class="slogan">Prenez de l'elan</p>
                         </div>
-                        <div id="nav-right">
                         <?php
-                            // si l'utilisateur est connecté 
-                            if(App\Session::getUser()){
-                                ?>
-                                <div class="nav-profile">
-                                    <a href="index.php?ctrl=security&action=profile"><span class="fas fa-user"></span>&nbsp;Profil</a>
+                        if(App\Session::isAdmin()){ ?>
+                            <div class="nav-container">
+                                <div id="nav-left">
+                                    
+                                    <a href="index.php?ctrl=security&action=users"><i class="fa-solid fa-table-list"></i>Users</a>
                                 </div>
-                                <div class="nav-homepage">
-                                    <a href="index.php"><span class="fa-solid fa-house"></span>Page principale</a>
-                                </div>
-                                <div class="nav-category">
-                                    <a href="index.php?ctrl=forum&action=index"><span class="fa-solid fa-layer-group"></span>Liste des catégories</a>
-                                </div>
-                                <div class="nav-logout">
-                                <a href="index.php?ctrl=security&action=logout"><span class="fa-solid fa-share-from-square"></span>Déconnexion</a>   
-                                </div>
- 
+                            </div>
+                        <?php } ?>
+                        <div class="nav-container">
+                            <div id="nav-right">
                                 <?php
-                            }
-                            else{
-                                ?>
-                                <a href="index.php">Page principale</a>
-                                <a href="index.php?ctrl=security&action=login">Connexion</a>
-                                <a href="index.php?ctrl=security&action=register">Inscription</a>
-                                <a href="index.php?ctrl=forum&action=index">Liste des catégories</a>
-                            <?php
-                            }
-                        ?>
+                                // si l'utilisateur est connecté 
+                                if(App\Session::getUser()){ ?>
+                                    <div class="nav-profil"> 
+                                        <a href="index.php?ctrl=security&action=profile"><span class="fas fa-user"></span>&nbsp;Profil</a>
+                                    </div> 
+                                    <div class="nav-pageprincipale">                            
+                                        <a href="index.php"><span class="fa-solid fa-house"></span>Page principale</a>
+                                    </div>
+                                    <div class="nav-listecat">
+                                        <a href="index.php?ctrl=forum&action=index"><span class="fa-solid fa-layer-group"></span>Liste des catégories</a>
+                                    </div>
+                                    <div class="nav-logoff">          
+                                        <a href="index.php?ctrl=security&action=logout"><span class="fa-solid fa-share-from-square"></span>Déconnexion</a>
+                                    </div>
+                                <?php } else { ?>
+                                    <div class="nav-pageprincipale">
+                                        <a href="index.php">Page principale</a>
+                                    </div>
+                                    <div class="nav-logoff">
+                                        <a href="index.php?ctrl=security&action=login">Connexion</a>
+                                    </div>
+                                    <div class="nav-logoff">
+                                        <a href="index.php?ctrl=security&action=register">Inscription</a>
+                                    </div>
+                                    <div class="nav-listecat">
+                                        <a href="index.php?ctrl=forum&action=index">Liste des catégories</a>
+                                    </div>
+                                <?php } ?>
+                            </div>
                         </div>
                         <div class="settings">
                             <i class="fa-solid fa-gear" id="settings-icon"></i>

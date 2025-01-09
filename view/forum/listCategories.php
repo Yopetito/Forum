@@ -6,35 +6,58 @@
 
 <div class="main-category-container">
     <div class="category-container">
-        <h2>Liste des gatégories</h2>
-        <div class="category-box">
+        <h2>Liste des catégories</h2>
+        <table class="forum-table">
+            <thead>
+                <tr>
+                    <th>Categorie</th>
+                    <th>Topics Posté</th>
+                </tr>
+            </thead>
+            <tbody>
             <?php
             //Liste des catégories existantes en BDD. 
             foreach($categories as $category ){ ?>
-                <a href="index.php?ctrl=topic&action=listTopicsByCategory&id=<?= $category->getId() ?>">
-                    <div class="category-item">
-                        <p><?= $category->getName() ?></p>
-                    </div>
-                </a>
+                <tr>
+                    <td>
+                        <a href="index.php?ctrl=topic&action=listTopicsByCategory&id=<?= $category->getId() ?>">
+                            <?= $category->getName() ?>
+                        </a>
+                    </td>
+                    <td>
+                        2
+                    </td>
+                </tr>
             <?php } ?>
-        </div>
+            </tbody>
+        </table>
     </div>
     
     <!-- Liste des 5 topics avec le plus de posts = Hot topics -->
     <div class="category-container">
         <h2>hot topics</h2>
-        <div class="category-box">
+        <table class="forum-table">
+            <thead>
+                <tr>
+                    <th>Topic:</th>
+                    <th>Nombre de postes</th>
+                </tr>
+            </thead>
+            <tbody>
             <?php
             foreach($hotTopics as $hotTopic){ ?>
-
-                <a href="index.php?ctrl=post&action=listPostInTopic&id=<?=$hotTopic->getId() ?>">
-                    <div class="category-item">
-                        <p><?= $hotTopic->getTitle() ?></p>
-                        <p>Nombre de posts: <?= $hotTopic->getTotalPosts() ?></p>
-                    </div>
-                </a>
+                <tr>
+                    <td>
+                        <a href="index.php?ctrl=post&action=listPostInTopic&id=<?=$hotTopic->getId() ?>">
+                        <?= $hotTopic->getTitle() ?>
+                        </a>
+                    </td>
+                    <td>
+                       <?= $hotTopic->getTotalPosts() ?>
+                    </td>
             <?php } ?>
-        </div>
+            </tbody>
+        </table>
     </div>
 </div>
 
