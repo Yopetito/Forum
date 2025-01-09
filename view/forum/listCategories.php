@@ -6,7 +6,7 @@
 
 <div class="main-category-container">
     <div class="category-container">
-        <h2>Liste des gatégories</h2>
+        <h2>Liste des catégories</h2>
         <div class="category-box">
             <?php
             //Liste des catégories existantes en BDD. 
