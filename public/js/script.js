@@ -45,10 +45,19 @@ settingsIcon.addEventListener('click', function () {
 colors.forEach((color, index) => {
     color.addEventListener('click', function () {
         let theme = '';
-        if (index === 0) theme = 'theme1';
-        else if (index === 1) theme = 'theme2';
-        else if (index === 2) theme = 'theme3';
-        else if (index === 3) theme = 'theme4';
+        switch (index) {
+            case index === 1:
+                theme = 'theme1';
+                break;
+            case index === 2:
+                theme = 'theme2'
+                break;
+            case index === 3:
+                theme = 'theme3'
+                break;
+            case index === 4:
+                theme = 'theme4'
+                break;
 
         //on envoi en paramettre "theme" dans la fonction applyTheme qui elle defini la palette de couleurs selon la valeur de "theme"
         applyTheme(theme);
