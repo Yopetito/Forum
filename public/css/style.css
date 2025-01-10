@@ -77,7 +77,6 @@ nav {
     display: flex;
     flex-direction: row;
     gap: 5px;
-    backdrop-filter: blur(30px);
 }
 .nav-left-container {
     display: flex;
@@ -163,7 +162,7 @@ nav {
     text-align: left;
 }
 .forum-table td {
-    border-right: 1px solid var(--principal-color-middle);
+    border-right: 1px solid #9b9696;
 }
 
 .forum-table td:last-child {
@@ -176,7 +175,7 @@ nav {
 
 /* Corps */
 .forum-table tbody tr {
-    border-bottom: 1px solid var(--principal-color-middle);
+    border-bottom: 1px solid #9b9696;
 }
 
 .forum-table tbody tr:nth-child(even) {
@@ -184,7 +183,7 @@ nav {
 }
 
 .forum-table tbody td {
-    padding: 10px;
+    padding: 20px 5px;
     vertical-align: middle;
 }
 
@@ -192,3 +191,22 @@ nav {
     text-decoration: none;
     color: var(--principal-color-dark);
 }
+@media only screen and (max-width: 480px) {
+    nav {
+        display: none;
+    }
+
+    #wrapper {
+        margin: 0;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    nav {
+        display: none;
+    }
+
+    #wrapper {
+        margin: 0;
+    }
+  }
