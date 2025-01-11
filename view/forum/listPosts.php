@@ -6,22 +6,37 @@ $posts = $result["data"]['posts'];
 if(!empty($topic) && !empty($posts)) { 
     $categoryId = $topic->getCategory()->getId();
     ?>
-    <h1><?= $topic->getTitle() ?> </h1>
-    <a href="index.php?ctrl=topic&action=listTopicsByCategory&id=<?= $categoryId ?>" class="btn-return"><i class="fa-solid fa-rotate-left"> topics</i></a>
-    <div class="list-box">
+    <div class="emplacement-info">
+        <div class="emplacement">
+            <h1><?= $topic->getTitle() ?> </h1>  
+        </div>
+        <div class="bouton-retour">
+        <a href="index.php?ctrl=topic&action=listTopicsByCategory&id=<?= $categoryId ?>" class="btn-return"><i class="fa-solid fa-rotate-left"> topics</i></a>
+        </div>
+    </div>
+    <div class="list-box-post">
+        <div class="headinfo">
+            <p>Posts</p>
+            <p>Autor</p>
+            <p>Date</p>
+        </div> 
         <?php 
         
         // compteur pour creation de la class dynamique pour du CSS
         $i = 0;
         foreach($posts as $post ){ 
         $class = $i % 2 === 0 ? 'even' : 'odd'; ?>
-        <div class="list-item <?= $class ?>">
+        <div class="list-item-post <?= $class ?>">
             <!-- affichage de l'information des posts dans un tipic a l'aide des getters -->
-            <p>
-                par <?= $post->getUser() ? $post->getUser() : "utilisateur supprimé"  ?> 
+            <div class="topic-title">
+                <?= $post ?>
+            </div>
+            <div class="topic-autor">
+                <?= $post->getUser() ? $post->getUser() : "utilisateur supprimé"  ?> 
+            </div>
+            <div class="topic-date">
                 le <?= $post->getCreationDate() ?> 
-            </p>
-            <p class="post-content"><?= $post ?></p>
+            </div>
         </div>
         <!--  incrémentation de la var $i pour attribution de "odd" "even" dans le nom de la class-->
         <?php $i++; ?>
