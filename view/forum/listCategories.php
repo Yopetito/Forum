@@ -11,7 +11,6 @@
             <thead>
                 <tr>
                     <th>Categorie</th>
-                    <th>Topics Posté</th>
                 </tr>
             </thead>
             <tbody>
@@ -23,9 +22,6 @@
                         <a href="index.php?ctrl=topic&action=listTopicsByCategory&id=<?= $category->getId() ?>">
                             <?= $category->getName() ?>
                         </a>
-                    </td>
-                    <td>
-                        2
                     </td>
                 </tr>
             <?php } ?>

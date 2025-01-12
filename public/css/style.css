@@ -521,6 +521,268 @@ footer {
     background-color: var(--box-color);
 }
 
+/* LOGIN FORM */
+
+.login-heading {
+    color: var(--principal-color-dark);
+    font-family: var(--secondary-font);
+    text-align: center;
+    margin: 20px 0;
+    font-size: 2rem;
+}
+
+.login-container {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: var(--box-color);
+    padding: 20px;
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-login {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-label {
+    font-weight: var(--middle-weight);
+    color: var(--info-letter-color);
+    margin-bottom: 5px;
+}
+
+.form-input {
+    width: 90%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-family: var(--principal-font);
+    background: white;
+    color: var(--info-letter-color);
+    transition: box-shadow 0.3s ease-in-out, border-color 0.3s ease-in-out;
+}
+
+.form-input:focus {
+    outline: none;
+    box-shadow: 0 0 5px var(--principal-color-middle);
+    border-color: var(--principal-color-middle);
+}
+
+.form-button {
+    background-color: var(--principal-color-middle);
+    color: var(--letter-color);
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 1rem;
+    font-family: var(--principal-font);
+    font-weight: var(--middle-weight);
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.form-button:hover {
+    background-color: var(--hover-color);
+    transform: scale(1.05);
+}
+
+/* register */
+
+.register-heading {
+    color: var(--principal-color-dark);
+    font-family: var(--secondary-font);
+    text-align: center;
+    margin: 20px 0;
+    font-size: 2rem;
+}
+
+.register-container {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: var(--box-color);
+    padding: 20px;
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-register {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-label {
+    font-weight: var(--middle-weight);
+    color: var(--info-letter-color);
+    margin-bottom: 5px;
+}
+
+
+
+/* HOME */
+
+.home-container {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.welcome-section {
+    margin-bottom: 40px;
+    background-color: var(--box-color);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.welcome-section h1 {
+    color: var(--principal-color-dark);
+    font-family: var(--secondary-font);
+    margin-bottom: 20px;
+}
+
+.welcome-section p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.btn-primary, .btn-secondary {
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: var(--middle-weight);
+    margin: 10px 5px;
+    display: inline-block;
+}
+
+.btn-primary {
+    background-color: var(--principal-color-middle);
+    color: var(--letter-color);
+}
+
+.btn-primary:hover {
+    background-color: var(--hover-color);
+}
+
+.btn-secondary {
+    background-color: var(--principal-color-light);
+    color: var(--info-letter-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--hover-color);
+    color: var(--letter-color);
+}
+
+.features-section {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.feature-box {
+    background-color: var(--box-color);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 300px;
+    flex: 1;
+    text-align: left;
+}
+
+.feature-box h2 {
+    font-size: 1.5rem;
+    color: var(--principal-color-dark);
+    margin-bottom: 10px;
+}
+
+.feature-box p {
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+
+.btn-link {
+    text-decoration: none;
+    font-weight: var(--middle-weight);
+    color: var(--principal-color-middle);
+    transition: color 0.3s ease;
+}
+
+.btn-link:hover {
+    color: var(--hover-color);
+}
+
+
+/* PPALETTE DE COULEURS */
+.settings {
+    position: relative;
+    display: inline-block;
+    margin: 10px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+/* Icône des paramètres */
+#settings-icon {
+    font-size: 1.5rem;
+    color: var(--principal-color-dark);
+    transition: color 0.3s ease;
+}
+
+#settings-icon:hover {
+    color: var(--hover-color);
+}
+
+/* Conteneur de choix des couleurs */
+.color-choice {
+    display: none;
+    position: absolute;
+    top: 40px;
+    right: 0;
+    /* background-color: var(--box-color); */
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Options de couleurs */
+.color {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin: 5px;
+    cursor: pointer;
+    display: inline-block;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.color:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Animation d'apparition */
+.color-choice {
+    animation: fadeIn 0.3s ease;
+}
+
+/* Animation keyframes */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 @media only screen and (max-width: 480px) {
     nav {
         display: none;
