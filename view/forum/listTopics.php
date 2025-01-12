@@ -41,9 +41,14 @@ if(!empty($topics) && !empty($category)) { ?>
             </div>
             <div class="topic-status">
                 <?php if($topic->getLocked() == 1) { ?>
-                    <i class="fa-solid fa-lock"></i>
+                    <div class="status-locked">
+                        <i class="fa-solid fa-lock"></i>
+                    </div>
+                    
                 <?php } elseif($topic->getLocked() == 0) { ?>
-                    <i class="fa-solid fa-lock-open"></i>
+                    <div class="status-unlocked">
+                        <i class="fa-solid fa-lock-open"></i>
+                    </div>
                 <?php } ?>
             </div>   
             <!-- Vérouillage du topic >>>> si l'utilisateur est connecté && utilateur est propriaitre du topic || l'utilisateur a le role ADMIN  -->
